@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me Webpage</title>
+
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Ganga B Nair - odd but original
+    </header>
+    <section class="hero">   
+        <h1>About Me:</h1>
+        <img src="ganga.jpg" alt="this is what i look like hehe" width="200" height="200">
+        <h2>I'm the biggest yappesh you know !</h2>
+        <p>Jokes aside, I'm innovative and enthusiastic 2nd-year Computer Science Engineering with Artifical
+            Intelligence student, eager to apply problem-solving, programming, and teamwork skills. Passionate about developing impactful, real-world solutions
+            using technology while continuously learning and contributing to team success.
+        </p>
+        <p>
+            Dynamic Chief Creative Officer at Catalyst - Mar Baselios IEDC, adept at leading
+            multimedia projects and fostering team collaboration. Proven expertise in Python and creative
+            problem-solving, driving impactful startup initiatives. Successfully coordinated community
+            events, enhancing outreach and engagement through effective communication and strategic
+            marketing efforts</p>
+    </section>
+    <section>
+        <h2>I'm passionate about:</h2>
+        <ul>
+            <li>Reading</li>
+            <li>Writing Poems</li>
+            <li>Debating</li>
+            <li>Researching true crime</li>
+            <li>Mythology</li>
+
+        </ul>
+    </section>
+    <section>   
+        <h2>Contact Me:</h2>
+        <p>Wanna hear more of my quips and infodumps ?:</p>
+        <div class="contact-actions">
+            <a class="btn btn-primary" href="https://www.instagram.com/ganga.b.nair/" target="_blank" rel="noopener noreferrer">Instagram- For my Iconic Stories</a>
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/ganga-b-nair-47941a235/" target="_blank" rel="noopener noreferrer">LinkedIn-My Journey in the world of Tech</a>
+            <button id="emailBtn" class="btn btn-secondary" type="button">Email- I do check these</button>
+        </div>
+                    
+
+                    <div id="emailModal" class="modal" aria-hidden="true">
+                        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="emailModalTitle">
+                            <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+                            <h3 id="emailModalTitle">Email</h3>
+                            <p id="modalEmail">gangabnair616@gmail.com</p>
+                            <div class="modal-actions">
+                                <button id="copyEmail" class="btn">Copy email</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+    </section>
+        <footer>© 2025 stay weird geng.</footer>
+
+        <script>
+            (function(){
+                const emailBtn = document.getElementById('emailBtn');
+                const modal = document.getElementById('emailModal');
+                const modalClose = document.getElementById('modalClose');
+                const copyBtn = document.getElementById('copyEmail');
+                const modalEmail = document.getElementById('modalEmail').textContent.trim();
+
+                function openModal(){
+                    modal.style.display = 'block';
+                    modal.setAttribute('aria-hidden', 'false');
+                    modal.querySelector('.modal-close').focus();
+                }
+
+                function closeModal(){
+                    modal.style.display = 'none';
+                    modal.setAttribute('aria-hidden', 'true');
+                    emailBtn.focus();
+                }
+
+                emailBtn && emailBtn.addEventListener('click', openModal);
+                modalClose && modalClose.addEventListener('click', closeModal);
+
+            
+                
+
+                copyBtn && copyBtn.addEventListener('click', function(){
+                    if(navigator.clipboard && navigator.clipboard.writeText){
+                        navigator.clipboard.writeText(modalEmail).then(function(){
+                            copyBtn.textContent = 'Copied!';
+                            setTimeout(function(){ copyBtn.textContent = 'Copy email'; }, 1500);
+                        });
+                    } else {
+                        // fallback
+                        const tmp = document.createElement('textarea');
+                        tmp.value = modalEmail;
+                        document.body.appendChild(tmp);
+                        tmp.select();
+                        try{ document.execCommand('copy'); copyBtn.textContent = 'Copied!'; }
+                        catch(e){ alert('Copy not supported — your email: ' + modalEmail); }
+                        document.body.removeChild(tmp);
+                        setTimeout(function(){ copyBtn.textContent = 'Copy email'; }, 1500);
+                    }
+                });
+            })();
+        </script>
+
+</body>
+</html>
